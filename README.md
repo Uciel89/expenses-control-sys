@@ -1,5 +1,5 @@
 <div align="center">
-  <img height="220" src="https://drive.google.com/uc?export=view&id=1Ty5OIc_DRFD-jLtda-EIcynmV7dmNuTw&rl"/>
+  <img width="220" height="220" src="https://drive.google.com/uc?export=view&id=1Ty5OIc_DRFD-jLtda-EIcynmV7dmNuTw&rl"/>
   <h1 align="center">Expenses Control - Sistema de Gestión de Gastos</h1>
 </div>
 
