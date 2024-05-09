@@ -9,6 +9,7 @@
 ![ alt text ](https://img.shields.io/badge/Tailwindcss-3.4.3-0F172A?style=for-the-badge&logo=tailwindcss)
 ![ alt text ](https://img.shields.io/badge/MySQL-8.1.0-4479A1?style=for-the-badge&logo=MySQL)
 ![ alt text ](https://img.shields.io/badge/SPRINGBOOT-3.2.5-6DB33F?style=for-the-badge&logo=Spring)
+![ alt text ](https://img.shields.io/badge/pnpm-8.14.1-F69220?style=for-the-badge&logo=pnpm)
 
 
 Expenses Control es un sistema de gestión de gastos intuitivo y de código abierto 💸
