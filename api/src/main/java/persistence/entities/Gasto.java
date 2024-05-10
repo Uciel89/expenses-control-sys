@@ -18,7 +18,6 @@ public class Gasto {
     private Categoria categoria;
     @Column
     private LocalDateTime fecha;
-    @ManyToOne
-    @JoinColumn(name = "id_cuenta")
+    @Column
     private Cuenta cuenta;
 }
