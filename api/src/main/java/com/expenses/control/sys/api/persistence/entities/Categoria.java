@@ -11,9 +11,9 @@ import java.util.List;
 @Table(name = "categorias")
 public class Categoria {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria",nullable = false)
-    private Long idCategoria;
+    private long idCategoria;
     @Basic
     private String nombreCategoria;
     @OneToMany(mappedBy = "idRubro")
