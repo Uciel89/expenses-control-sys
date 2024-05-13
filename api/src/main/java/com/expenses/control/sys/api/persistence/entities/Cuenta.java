@@ -11,9 +11,9 @@ import java.util.List;
 @Table(name = "cuentas")
 public class Cuenta {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cuenta",nullable = false)
-    private Long idCuenta;
+    private long idCuenta;
     @Basic
     private String nombre;
     private double saldo;

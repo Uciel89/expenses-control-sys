@@ -8,9 +8,9 @@ import lombok.Data;
 @Table(name = "rubros")
 public class Rubro {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_rubro",nullable = false)
-    private Long idRubro;
+    private long idRubro;
     @Basic
     private String nombreRubro;
     private double total;

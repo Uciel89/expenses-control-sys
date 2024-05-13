@@ -12,9 +12,9 @@ import java.util.List;
 @Table(name = "gastos")
 public class Gasto {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_gasto",nullable = false)
-    private Long idGasto;
+    private long idGasto;
     @Basic
     private double monto;
     private LocalDateTime fecha;
