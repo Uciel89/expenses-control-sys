@@ -1,15 +1,21 @@
-import { Route } from 'react-router-dom'
 import './App.css'
 
-import { BrowserRouter, Routes, Router } from 'react-router-dom'
-import HomePage from './pages/HomePage/HomePage'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import LoginPage from './pages/LoginPage/LoginPage'
+import PortfolioPage from './pages/PortfolioPage/PortfolioPage'
+import DashboardPage from './pages/DashboardPage/DashboardPage'
+import { Navigate } from 'react-router-dom'
 
 function App() {
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/*' element={<HomePage />}/>
+        <Route path='/' element={<PortfolioPage />}/>
+        <Route path='login' element={<LoginPage />} />
+        <Route path='documentación' />
+        <Route path='dashboard' element={<DashboardPage />} />
+        <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </BrowserRouter>
   )

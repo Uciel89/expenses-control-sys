@@ -18,7 +18,7 @@ function Footer() {
               </span>
             </a>
           </div>
-          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          {/* <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
               <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Resources
@@ -76,7 +76,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
@@ -87,7 +87,7 @@ function Footer() {
             </a>
             . All Rights Reserved.
           </span>
-          <div class="flex mt-4 sm:justify-center sm:mt-0">
+          {/* <div class="flex mt-4 sm:justify-center sm:mt-0">
             <a
               href="#"
               class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
@@ -179,7 +179,7 @@ function Footer() {
               </svg>
               <span class="sr-only">Dribbble account</span>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
