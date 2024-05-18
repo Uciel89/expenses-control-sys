@@ -3,10 +3,18 @@ import './DarkThemeButton.css';
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { getItem, setItem } from '../utilities/localStorageUtils';
 
 function DarkThemeButton() {
+  const themeValue = getItem("theme");
+
+  // Estado para el tema
   const [theme, setTheme] = useState(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    // Establecer el tema basado en el valor del localStorage
+    if (
+      themeValue === "dark" ||
+      (!themeValue && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
       return "dark";
     }
     return "light";
@@ -20,15 +28,15 @@ function DarkThemeButton() {
     }
   }, [theme]);
 
+  // Actualizar el tema en el localStorage y el estado
   const handleChangeTheme = (event) => {
     const isChecked = event.target.checked;
-    setTheme(isChecked ? "dark" : "light");
+    const newTheme = isChecked ? "dark" : "light";
+    setItem("theme", newTheme);
+    setTheme(newTheme);
   };
 
   return (
-   /*  <Button onClick={handleChangeTheme} className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
-      Save changes
-    </Button> */
     <div className="flex flex-col justify-center mr-3">
       <input 
         type="checkbox" 

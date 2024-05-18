@@ -6,24 +6,19 @@ import {
   Transition,
 } from "@headlessui/react";
 import {
-  ArrowPathIcon,
   Bars3Icon,
   ChartPieIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
   XMarkIcon,
   ShoppingCartIcon,
   BanknotesIcon
 } from "@heroicons/react/24/outline";
 import {
   ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
 } from "@heroicons/react/20/solid";
-import DarkThemeButton from "../../../../components/DarkThemeButton";
-
-import logo from '../../../../assets/img/logo_ec.webp'
 import { Link } from "react-router-dom";
+
+import DarkThemeButton from "../../../../components/DarkThemeButton";
+import logo from '../../../../assets/img/logo_ec.webp'
 
 const products = [
   {
@@ -71,7 +66,7 @@ function Header() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-900 dark:text-white"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
