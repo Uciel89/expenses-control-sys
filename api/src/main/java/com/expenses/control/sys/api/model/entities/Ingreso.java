@@ -1,4 +1,4 @@
-package com.expenses.control.sys.api.persistence.entities;
+package com.expenses.control.sys.api.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

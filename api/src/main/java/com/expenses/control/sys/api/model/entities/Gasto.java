@@ -1,8 +1,7 @@
-package com.expenses.control.sys.api.persistence.entities;
+package com.expenses.control.sys.api.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.context.annotation.EnableMBeanExport;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,8 +18,8 @@ public class Gasto {
     private double monto;
     private LocalDateTime fecha;
     @ManyToOne
-    @JoinColumn(name = "id_categoria")
-    private Categoria categoria;
+    @JoinColumn(name = "id_establecimiento")
+    private Establecimiento establecimiento;
     @OneToMany(mappedBy = "idCuenta")
     private List<Cuenta> cuentaList;
 }

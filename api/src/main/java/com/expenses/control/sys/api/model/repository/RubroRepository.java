@@ -1,6 +1,6 @@
-package com.expenses.control.sys.api.persistence.repository;
+package com.expenses.control.sys.api.model.repository;
 
-import com.expenses.control.sys.api.persistence.entities.Rubro;
+import com.expenses.control.sys.api.model.entities.Rubro;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RubroRepository extends JpaRepository<Rubro,Long> {

@@ -1,7 +1,9 @@
-package com.expenses.control.sys.api.persistence.entities;
+package com.expenses.control.sys.api.model.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -14,7 +16,7 @@ public class Rubro {
     @Basic
     private String nombreRubro;
     private double total;
-    @ManyToOne
-    @JoinColumn(name = "id_categoria")
-    private Categoria categoria;
+    @OneToMany(mappedBy = "rubro")
+    private List<Establecimiento> establecimientoList;
+
 }
