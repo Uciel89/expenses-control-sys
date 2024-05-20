@@ -1,47 +1,49 @@
 package com.expenses.control.sys.api.controllers;
-
-import com.expenses.control.sys.api.dto.CuentaDto;
+import com.expenses.control.sys.api.dto.cuenta.CuentaConverter;
+import com.expenses.control.sys.api.dto.cuenta.CuentaDto;
 import com.expenses.control.sys.api.model.entities.Cuenta;
 import com.expenses.control.sys.api.service.cuenta.ICuentaService;
-import org.apache.coyote.Response;
-import org.hibernate.query.NativeQuery;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @RestController
-@RequestMapping("/v1/cuentas")
+@RequestMapping("/v1")
 public class CuentaController {
     @Autowired
     private ICuentaService cuentaService;
-
-    @GetMapping()
-    public ResponseEntity<List<Cuenta>> getAll(){
+    @Autowired
+    private CuentaConverter converter;
+    @GetMapping("/cuentas")
+    public ResponseEntity<List<CuentaDto>> getAll(){
         List<Cuenta> cuentaList = cuentaService.getAllCuentas();
         if(cuentaList.isEmpty())return ResponseEntity.noContent().build();
-        else return ResponseEntity.ok(cuentaService.getAllCuentas());
+        List<CuentaDto> cuentaDtos = converter.fromEntityList(cuentaList);
+        return ResponseEntity.ok(cuentaDtos);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Cuenta> getById (@PathVariable long id) {
+    @GetMapping("/cuenta/{id}")
+    public ResponseEntity<CuentaDto> getById (@PathVariable long id) {
         Cuenta cuenta  = cuentaService.getCuentaById(id);
         if(cuenta == null) return ResponseEntity.notFound().build();
-        else return ResponseEntity.ok(cuenta);
+        CuentaDto cuentaDto = converter.fromEntity(cuenta);
+        return ResponseEntity.ok(cuentaDto);
     }
 
-    @PostMapping()
-    public ResponseEntity<Cuenta> create(@RequestBody Cuenta cuenta) {
-        Cuenta createCuenta = cuentaService.update(cuenta);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createCuenta);
+    @PostMapping("/cuenta")
+    public ResponseEntity<CuentaDto> create(@RequestBody CuentaDto cuentaDto) {
+        Cuenta createCuenta = cuentaService.update(converter.fromDto(cuentaDto));
+        CuentaDto createDto = converter.fromEntity(createCuenta);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createDto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/cuenta/{id}")
     public ResponseEntity<?> delete(@PathVariable long id){
         try{
             Cuenta cuentaDelete = cuentaService.getCuentaById(id);
@@ -52,10 +54,11 @@ public class CuentaController {
         }
     }
 
-    @PutMapping()
-    public ResponseEntity<Cuenta> updateCuenta(@RequestBody Cuenta cuenta) {
-        Cuenta updateCuenta = cuentaService.update(cuenta);
+    @PutMapping("/cuenta")
+    public ResponseEntity<CuentaDto> updateCuenta(@RequestBody CuentaDto cuentaDto) {
+        Cuenta updateCuenta = cuentaService.update(converter.fromDto(cuentaDto));
         if (updateCuenta == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(updateCuenta);
+        CuentaDto updateDto = converter.fromEntity(updateCuenta);
+        return ResponseEntity.ok(updateDto);
     }
 }

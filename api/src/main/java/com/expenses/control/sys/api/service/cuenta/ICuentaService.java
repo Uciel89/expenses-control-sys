@@ -1,6 +1,5 @@
 package com.expenses.control.sys.api.service.cuenta;
 
-import com.expenses.control.sys.api.dto.CuentaDto;
 import com.expenses.control.sys.api.model.entities.Cuenta;
 
 import java.util.List;
