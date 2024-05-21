@@ -12,8 +12,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<PortfolioPage />}/>
-        <Route path='login' element={<LoginPage />} />
-        <Route path='documentación' />
+        <Route path='users/*' element={<LoginPage />} />
+        <Route path='documentation' />
         <Route path='dashboard' element={<DashboardPage />} />
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>

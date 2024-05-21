@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import {
+  Button,
   Dialog,
   Disclosure,
   Popover,
@@ -10,35 +11,36 @@ import {
   ChartPieIcon,
   XMarkIcon,
   ShoppingCartIcon,
-  BanknotesIcon
+  BanknotesIcon,
 } from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-} from "@heroicons/react/20/solid";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 
 import DarkThemeButton from "../../../../components/DarkThemeButton";
-import logo from '../../../../assets/img/logo_ec.webp'
+import logo from "../../../../assets/img/logo_ec.webp";
 
 const products = [
   {
     name: "Categorías",
-    description: "Categorías personalizadas para organizar gastos de acuerdo ah necesidades específicas.",
+    description:
+      "Categorías personalizadas para organizar gastos de acuerdo ah necesidades específicas.",
     href: "#",
     icon: ShoppingCartIcon,
   },
   {
     name: "Métricas",
-    description: "Métricas detalladas proporcionando una visión clara de la situación financiera",
+    description:
+      "Métricas detalladas proporcionando una visión clara de la situación financiera",
     href: "#",
     icon: ChartPieIcon,
   },
   {
     name: "Ingresos",
-    description: "Registro de ingresos de diferentes fuentes como efectivo, cuentas bancarias y billeteras digitales",
+    description:
+      "Registro de ingresos de diferentes fuentes como efectivo, cuentas bancarias y billeteras digitales",
     href: "#",
     icon: BanknotesIcon,
-  }
+  },
 ];
 
 function classNames(...classes) {
@@ -74,7 +76,10 @@ function Header() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <Link to="#" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
+          <Link
+            to="#"
+            className="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
+          >
             Inicio
           </Link>
           <Popover className="relative">
@@ -124,17 +129,29 @@ function Header() {
               </Popover.Panel>
             </Transition>
           </Popover>
-          <Link to="#" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
+          <Link
+            to="#"
+            className="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
+          >
             Documentación
           </Link>
-          <Link to="#" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
+          <Link
+            to="#"
+            className="text-sm font-semibold leading-6 text-gray-900 dark:text-white"
+          >
             Equipo
           </Link>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center ">
           <DarkThemeButton />
-          <Link to="/login" className="text-sm font-semibold leading-6 dark:text-white text-gray-900">
-            Inicio sesión <span aria-hidden="true">&rarr;</span>
+
+          <Link
+            to="/users/login"
+            className="text-sm font-semibold leading-6 dark:text-white text-gray-900"
+          >
+            <Button className="inline-flex items-center gap-2 rounded-md bg-cyan-500 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-cyan-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
+              Inicio sesión <span aria-hidden="true">&rarr;</span>
+            </Button>
           </Link>
         </div>
       </nav>
@@ -147,12 +164,10 @@ function Header() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5 flex items-center">
-              <img
-                className="h-14 w-auto"
-                src={logo}
-                alt=""
-              />
-              <h1 className=" ml-2 text-xl font-semibold leading-7 text-gray-900">Expenses Control</h1>
+              <img className="h-14 w-auto" src={logo} alt="" />
+              <h1 className=" ml-2 text-xl font-semibold leading-7 text-gray-900">
+                Expenses Control
+              </h1>
             </a>
             <button
               type="button"
@@ -207,13 +222,14 @@ function Header() {
                 </Link>
               </div>
               <div className="py-6">
-                <Link
-                  to="/login"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
+                <Link to="/users/login">
+                  <Button className=" w-full inline-flex items-center gap-2 rounded-md bg-cyan-500 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-cyan-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
+                    Inicio sesión <span aria-hidden="true">&rarr;</span>
+                  </Button>
                 </Link>
-                <DarkThemeButton />
+                <div className="py-2">
+                  <DarkThemeButton />
+                </div>
               </div>
             </div>
           </div>
