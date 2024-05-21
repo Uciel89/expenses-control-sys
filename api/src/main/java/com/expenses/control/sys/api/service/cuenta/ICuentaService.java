@@ -8,7 +8,7 @@ public interface ICuentaService {
     List<Cuenta> getAllCuentas();
     Cuenta getCuentaById(long id);
 
-    Cuenta add(Cuenta cuenta);
+    Cuenta create(Cuenta cuenta);
 
     void delete(Cuenta cuenta);
 
