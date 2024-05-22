@@ -13,3 +13,22 @@
 
 
 Expenses Control es un sistema de gestión de gastos intuitivo y de código abierto 💸
+
+## Como desplegar el proyecto en Firebase 🔥
+> Debemos tener instalado dos paquetes, primero firebase `firebase` dentro del proyecto. Comando: `pnpm i firebase`
+> Y `firebase-tools` de manera global. Comando `pnpm i -D firebase-tools`
+
+Antes que nada tendremos que iniciar sesión en nuestra cuenta de firebase dentro de nuestro dispositivo
+```bash
+firebase login
+```
+
+Primero creamos los archivos para producción por medio del siguiente comando 
+```bash
+pnpm run build
+```
+
+Luego tendremos que hacer el deploy del sistema en nuestro hosting en Firebase
+```bash
+firebase deploy
+```
