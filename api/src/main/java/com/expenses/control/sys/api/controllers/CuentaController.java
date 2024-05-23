@@ -50,7 +50,7 @@ public class CuentaController {
     }
 
     @PutMapping("/cuenta")
-    public ResponseEntity<WrapperResponse<CuentaDto>> updateCuenta(@RequestBody CuentaDto cuentaDto) {
+    public ResponseEntity<WrapperResponse<CuentaDto>> update(@RequestBody CuentaDto cuentaDto) {
         Cuenta updateCuenta = cuentaService.update(converter.fromDto(cuentaDto));
         CuentaDto updateDto = converter.fromEntity(updateCuenta);
         return new WrapperResponse<CuentaDto>(true,"Cuenta actualizada con éxito",updateDto).createResponse(HttpStatus.OK);

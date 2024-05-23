@@ -8,9 +8,9 @@ public interface IRubroService {
     List<Rubro> getAllRubros();
     Rubro getRubroById(long id);
 
-    Rubro add(Rubro rubro);
+    Rubro create(Rubro rubro);
 
-    Rubro delete(long id);
+    void delete(Rubro rubro);
 
     Rubro update (Rubro rubro);
 }

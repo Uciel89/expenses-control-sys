@@ -9,9 +9,9 @@ public interface IEstablecimientoService {
     List<Establecimiento> getAllEstablecimientos();
     Establecimiento getEstablecimientoById(long id);
 
-    Establecimiento add(Establecimiento establecimiento);
+    Establecimiento create(Establecimiento establecimiento);
 
-    Establecimiento delete(long id);
+    void delete(Establecimiento establecimiento);
 
     Establecimiento update (Establecimiento establecimiento);
 }

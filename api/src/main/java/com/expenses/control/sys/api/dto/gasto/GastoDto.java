@@ -1,5 +1,7 @@
-package com.expenses.control.sys.api.model.entities;
+package com.expenses.control.sys.api.dto.gasto;
 
+import com.expenses.control.sys.api.model.entities.Cuenta;
+import com.expenses.control.sys.api.model.entities.Establecimiento;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,19 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-@Table(name = "gastos")
-public class Gasto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_gasto",nullable = false)
+public class GastoDto {
+
     private long idGasto;
-    @Basic
     private double monto;
     private LocalDateTime fecha;
-    @ManyToOne
-    @JoinColumn(name = "id_establecimiento")
     private Establecimiento establecimiento;
-    @OneToMany(mappedBy = "idCuenta")
     private List<Cuenta> cuentaList;
 }

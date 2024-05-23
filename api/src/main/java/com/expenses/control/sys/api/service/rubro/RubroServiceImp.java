@@ -1,41 +1,96 @@
 package com.expenses.control.sys.api.service.rubro;
 
+import com.expenses.control.sys.api.exceptions.GeneralServiceException;
+import com.expenses.control.sys.api.exceptions.NoDataFoundException;
+import com.expenses.control.sys.api.exceptions.ValidateServiceException;
 import com.expenses.control.sys.api.model.entities.Rubro;
 import com.expenses.control.sys.api.model.repository.RubroRepository;
+import com.expenses.control.sys.api.validator.RubroValidator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+@Slf4j
 @Service
 public class RubroServiceImp implements IRubroService {
     @Autowired
     RubroRepository rubroRepository;
     @Override
     public List<Rubro> getAllRubros() {
-        return rubroRepository.findAll();
+        try {
+            return rubroRepository.findAll();
+        }catch (NoDataFoundException e){
+            log.info(e.getMessage(),e);
+            throw e;
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            throw new GeneralServiceException(e.getMessage(),e);
+        }
     }
 
     @Override
     public Rubro getRubroById(long id) {
-        return rubroRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public Rubro add(Rubro rubro) {
-        return rubroRepository.save(rubro);
-    }
-
-    @Override
-    public Rubro delete(long id) {
-        Rubro rubro = rubroRepository.findById(id).orElse(null);
-        if(rubro != null){
-            rubroRepository.delete(rubro);
+        try{
+            return rubroRepository.findById(id)
+                    .orElseThrow(()->new NoDataFoundException("No exite un rubro con el ID: "+id));
+        }catch (ValidateServiceException | NoDataFoundException e){
+            log.info(e.getMessage(),e);
+            throw e;
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            throw new GeneralServiceException(e.getMessage(),e);
         }
-        return rubro;
+    }
+
+    @Override
+    public Rubro create(Rubro rubro) {
+        try{
+            RubroValidator.validate(rubro);
+            if(rubroRepository.findByNombreRubro(rubro.getNombreRubro())!=null)
+                throw new ValidateServiceException("Ya existe un Rubro registrado con ese nombre "+rubro.getNombreRubro());
+            return rubroRepository.save(rubro);
+        }catch (ValidateServiceException | NoDataFoundException e){
+            log.info(e.getMessage(),e);
+            throw e;
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            throw new GeneralServiceException(e.getMessage(),e);
+        }
+    }
+
+    @Override
+    public void delete(Rubro rubro) {
+        try{
+            Rubro rubroDelete = rubroRepository.findById(rubro.getIdRubro())
+                    .orElseThrow(()->new NoDataFoundException("No existe el registro"));
+            rubroRepository.delete(rubroDelete);
+        }catch (ValidateServiceException | NoDataFoundException e){
+            log.info(e.getMessage(),e);
+            throw e;
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            throw new GeneralServiceException(e.getMessage(),e);
+        }
     }
 
     @Override
     public Rubro update(Rubro rubro) {
-        return rubroRepository.save(rubro);
+        try{
+            RubroValidator.validate(rubro);
+            Rubro rubroUpdate = rubroRepository.findById(rubro.getIdRubro())
+                    .orElseThrow(()->new NoDataFoundException("No existe el rubro que quiere actualizar"));
+            Rubro rubroU = rubroRepository.findByNombreRubro(rubro.getNombreRubro());
+            if(rubroU.getIdRubro() != rubro.getIdRubro())
+                throw new ValidateServiceException("Ya existe otro rubro con el nombre: "+rubro.getNombreRubro());
+            rubroUpdate.setNombreRubro(rubro.getNombreRubro());
+            rubroU.setTotal(rubro.getTotal());
+            return rubroRepository.save(rubroUpdate);
+        }catch (ValidateServiceException | NoDataFoundException e){
+            log.info(e.getMessage(),e);
+            throw e;
+        }catch (Exception e){
+            log.error(e.getMessage(),e);
+            throw new GeneralServiceException(e.getMessage(),e);
+        }
     }
 }

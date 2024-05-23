@@ -6,7 +6,7 @@ import com.expenses.control.sys.api.model.entities.Cuenta;
 import java.util.List;
 
 public interface ICuentaService {
-    
+
     List<Cuenta> getAllCuentas();
     Cuenta getCuentaById(long id);
 

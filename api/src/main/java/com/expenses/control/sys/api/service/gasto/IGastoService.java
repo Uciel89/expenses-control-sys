@@ -8,9 +8,9 @@ public interface IGastoService {
     List<Gasto> getAllGastos();
     Gasto getGastoById(long id);
 
-    Gasto add(Gasto gasto);
+    Gasto create(Gasto gasto);
 
-    Gasto delete(long id);
+    void delete(Gasto gasto);
 
     Gasto update (Gasto gasto);
 }

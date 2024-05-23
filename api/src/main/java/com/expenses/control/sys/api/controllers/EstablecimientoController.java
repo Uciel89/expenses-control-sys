@@ -1,8 +1,14 @@
 package com.expenses.control.sys.api.controllers;
 
 
+import com.expenses.control.sys.api.dto.cuenta.CuentaConverter;
+import com.expenses.control.sys.api.dto.cuenta.CuentaDto;
+import com.expenses.control.sys.api.dto.establecimiento.EstablecimientoConverter;
+import com.expenses.control.sys.api.dto.establecimiento.EstablecimientoDto;
+import com.expenses.control.sys.api.model.entities.Cuenta;
 import com.expenses.control.sys.api.model.entities.Establecimiento;
 import com.expenses.control.sys.api.service.establecimiento.IEstablecimientoService;
+import com.expenses.control.sys.api.util.WrapperResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,35 +16,42 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/establecimiento")
+@RequestMapping("/v1")
 public class EstablecimientoController {
     @Autowired
     private IEstablecimientoService establecimientoService;
-    @PostMapping()
-    public ResponseEntity<Establecimiento> createEstablecimiento( @RequestBody Establecimiento establecimiento)  {
-        return ResponseEntity.ok(establecimientoService.add(establecimiento));
+    @Autowired
+    private EstablecimientoConverter converter;
+    @GetMapping("/establecimientos")
+    public ResponseEntity<WrapperResponse<List<EstablecimientoDto>>> getAll(){
+        List<Establecimiento> establecimientoList = establecimientoService.getAllEstablecimientos();
+        List<EstablecimientoDto> establecimientoDtos = converter.fromEntityList(establecimientoList);
+        return new WrapperResponse<List<EstablecimientoDto>>(true,"Establecimientos encontrados con éxito",establecimientoDtos).createResponse(HttpStatus.OK);
     }
-    @GetMapping()
-    public ResponseEntity<List<Establecimiento>> getAllEstablecimientos(){
-        return ResponseEntity.ok(establecimientoService.getAllEstablecimientos());
+    @GetMapping("/establecimiento/{id}")
+    public ResponseEntity<WrapperResponse<EstablecimientoDto>> getById (@PathVariable long id) {
+        Establecimiento establecimiento  = establecimientoService.getEstablecimientoById(id);
+        EstablecimientoDto establecimientoDto = converter.fromEntity(establecimiento);
+        return new WrapperResponse<EstablecimientoDto>(true,"Establecimiento encontrado con éxito",establecimientoDto).createResponse(HttpStatus.OK);
+    }
+    @PostMapping("/establecimiento")
+    public ResponseEntity<WrapperResponse<EstablecimientoDto>> create(@RequestBody EstablecimientoDto establecimientoDto) {
+        Establecimiento createEstablecimiento = establecimientoService.create(converter.fromDto(establecimientoDto));
+        EstablecimientoDto createDto = converter.fromEntity(createEstablecimiento);
+        return new WrapperResponse<EstablecimientoDto>(true,"Establecimiento creado con éxito",createDto).createResponse(HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Establecimiento> getEstablecimientosById (@PathVariable long id){
-        Establecimiento establecimiento = establecimientoService.getEstablecimientoById(id);
-        return ResponseEntity.ok(establecimiento);
+    @DeleteMapping("/establecimiento/{id}")
+    public ResponseEntity<?> delete(@PathVariable long id){
+        Establecimiento establecimientoDelete = establecimientoService.getEstablecimientoById(id);
+        establecimientoService.delete(establecimientoDelete);
+        return new WrapperResponse<>(true,"Establecimiento eliminado con éxito",null).createResponse(HttpStatus.OK);
     }
 
-    @PutMapping()
-    public ResponseEntity<Establecimiento> updateEstablecimiento(@RequestBody Establecimiento establecimiento){
-        Establecimiento update = establecimientoService.update(establecimiento);
-        if(update == null)return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(update);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteEstablecimiento(@PathVariable long id) {
-        establecimientoService.delete(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Establecimiento eliminado con exito");
+    @PutMapping("/establecimiento")
+    public ResponseEntity<WrapperResponse<EstablecimientoDto>> update(@RequestBody EstablecimientoDto establecimientoDto) {
+        Establecimiento updateEstablecimiento = establecimientoService.update(converter.fromDto(establecimientoDto));
+        EstablecimientoDto updateDto = converter.fromEntity(updateEstablecimiento);
+        return new WrapperResponse<EstablecimientoDto>(true,"Establecimiento actualizado con éxito",updateDto).createResponse(HttpStatus.OK);
     }
 }

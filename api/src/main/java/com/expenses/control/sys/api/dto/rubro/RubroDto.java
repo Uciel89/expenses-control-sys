@@ -1,5 +1,6 @@
-package com.expenses.control.sys.api.model.entities;
+package com.expenses.control.sys.api.dto.rubro;
 
+import com.expenses.control.sys.api.model.entities.Establecimiento;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,17 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-@Table(name = "rubros")
-public class Rubro {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_rubro",nullable = false)
+public class RubroDto {
+
     private long idRubro;
-    @Basic
     private String nombreRubro;
     private double total;
-    @OneToMany(mappedBy = "rubro")
     private List<Establecimiento> establecimientoList;
-
 }

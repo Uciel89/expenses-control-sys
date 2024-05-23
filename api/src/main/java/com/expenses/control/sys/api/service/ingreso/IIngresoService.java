@@ -8,9 +8,9 @@ public interface IIngresoService {
     List<Ingreso> getAllIngresos();
     Ingreso getIngresoById(long id);
 
-    Ingreso add(Ingreso ingreso);
+    Ingreso create(Ingreso ingreso);
 
-    Ingreso delete(long id);
+    void delete(Ingreso ingreso);
 
     Ingreso update (Ingreso ingreso);
 }
