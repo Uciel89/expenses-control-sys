@@ -1,9 +1,17 @@
-package com.expenses.control.sys.api.persistence.entities;
+package com.expenses.control.sys.api.model.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "rubros")
 public class Rubro {
@@ -14,7 +22,7 @@ public class Rubro {
     @Basic
     private String nombreRubro;
     private double total;
-    @ManyToOne
-    @JoinColumn(name = "id_categoria")
-    private Categoria categoria;
+    @OneToMany(mappedBy = "rubro")
+    private List<Establecimiento> establecimientoList;
+
 }

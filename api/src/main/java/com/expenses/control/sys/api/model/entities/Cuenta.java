@@ -1,12 +1,14 @@
-package com.expenses.control.sys.api.persistence.entities;
+package com.expenses.control.sys.api.model.entities;
 
-import io.micrometer.core.annotation.Counted;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "cuentas")
 public class Cuenta {
@@ -22,4 +24,5 @@ public class Cuenta {
     @ManyToOne
     @JoinColumn(name = "id_gasto")
     private Gasto gasto;
+
 }
