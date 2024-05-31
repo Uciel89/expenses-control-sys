@@ -7,7 +7,7 @@ import DashboardPage from './pages/DashboardPage/DashboardPage'
 import { Navigate } from 'react-router-dom'
 
 function App() {
-
+  
   return (
     <BrowserRouter>
       <Routes>

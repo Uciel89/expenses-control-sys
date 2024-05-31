@@ -1,9 +1,8 @@
 import './DarkThemeButton.css';
 
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { getItem, setItem } from '../utilities/localStorageUtils';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { getItem, setItem } from '../utilities/local-storage-utils';
 
 function DarkThemeButton() {
   const themeValue = getItem("theme");

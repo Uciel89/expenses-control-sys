@@ -16,7 +16,7 @@ function SignInPage() {
   }
 
   return (
-    <div className="flex overflow-auto min-h-full z-20 relative h-screen flex-1 flex-col justify-start px-6 py-12 lg:px-8 backdrop-blur-sm">
+    <div className="container-login h-full flex z-20 relative flex-1 flex-col justify-start px-6 py-12 lg:px-8 backdrop-blur-sm">
       <div className="w-full">
         <Link to="/" className="block w-2">
           <ArrowLeftIcon className="h-10 py-1 text-slate-50 cursor-pointer hover:text-slate-300" />

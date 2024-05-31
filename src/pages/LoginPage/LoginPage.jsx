@@ -1,10 +1,6 @@
 import React from "react";
 import "./styles/style.css";
 
-import logo from "../../assets/img/logo_ec.webp";
-import { ArrowLeftIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
-import { EyeIcon } from "@heroicons/react/20/solid";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import SignIn from "./pages/SignInPage";
@@ -44,7 +40,7 @@ function LoginPage() {
         <Route path="/register" element={<SignUpPage />} />
       </Routes>
       <div
-        className="absolute inset-x-0 z-0 transform-gpu overflow-hidden blur-3xl top-60"
+        className="absolute inset-x-0 z-0 transform-gpu overflow-hidden blur-3xl bottom-0 right-0 top-60"
         aria-hidden="true"
       >
         <div
