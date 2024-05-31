@@ -6,10 +6,12 @@ import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import {
   ArrowsRightLeftIcon,
   BanknotesIcon,
+  BuildingStorefrontIcon,
   ChartBarIcon,
   ChartPieIcon,
   HomeIcon,
 } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 function SidebarComponent({ toggle, handleCloseToggle }) {
   return (
@@ -23,7 +25,7 @@ function SidebarComponent({ toggle, handleCloseToggle }) {
             <HomeIcon className=" h-8 w-8 py-1 text-cyan-400 cursor-pointer" />
           }
         >
-          Inicio
+          <Link to='/dashboard/inicio'>Inicio</Link>
         </MenuItem>
         <MenuItem
           icon={
@@ -38,6 +40,13 @@ function SidebarComponent({ toggle, handleCloseToggle }) {
           }
         >
           Gastos
+        </MenuItem>
+        <MenuItem
+          icon={
+            <BuildingStorefrontIcon className=" h-8 w-8 py-1 text-cyan-400 cursor-pointer" />
+          }
+        >
+          <Link to='/dashboard/establecimientos'>Establecimientos</Link>
         </MenuItem>
         <MenuItem
           icon={
