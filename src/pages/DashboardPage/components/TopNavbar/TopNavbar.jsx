@@ -3,9 +3,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-function TopNavbar() {
-  const [namePage, setNamePage] = useState("");
+import DarkThemeButton from '../../../../components/DarkThemeButton';
+import { Bars3Icon } from "@heroicons/react/24/solid";
 
+function TopNavbar({handleOpenToggle}) {
+  const [namePage, setNamePage] = useState("");
   const location = useLocation();
 
   useEffect(() => {
@@ -21,49 +23,42 @@ function TopNavbar() {
     setIsVisibleMenu((prev) => !prev);
   };
   return (
-    <nav class="flex items-center justify-between w-full px-4 border-b border-gray-200 bg-gray-50 p-3">
+    <nav className="flex items-center justify-between w-full dark:bg-slate-900 dark:border-gray-700 px-4 border-b border-gray-200 bg-gray-100 p-3">
       <div className="flex gap-2">
-        <div class="lg:hidden">
-          <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-            <svg
-              class="fill-current h-3 w-3"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
+        <div className="lg:hidden">
+          <Bars3Icon onClick={handleOpenToggle} className=" h-8 w-8 py-1 text-gray-900 dark:text-cyan-400 cursor-pointer" />
         </div>
-        <div class="flex items-center flex-shrink-0 text-slate-900 mr-6">
-          <span class="font-semibold text-xl tracking-tight first-letter:uppercase">
+        <div className="flex items-center flex-shrink-0 text-slate-900 mr-6">
+          <span className="font-semibold text-xl tracking-tight first-letter:uppercase dark:text-gray-50">
             {namePage}
           </span>
         </div>
       </div>
-      <div class="block :flex lg:items-end justify-end lg:w-auto">
+      <div className="flex items-center justify-end lg:w-auto">
+        <DarkThemeButton />
         <div
           onClick={handleOpenMenu}
-          class="relative w-10 h-10 cursor-pointer overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
+          className="relative w-10 h-10 cursor-pointer overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
         >
           <img
             src="https://ui-avatars.com/api/?name=Uciel-Daro&background=2dd4bf&color=fff&size=128"
             alt=""
           />
         </div>
+
       </div>
       {isVisibleMenu && (
         <div
-          class="absolute right-2 top-16 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          className="absolute right-2 top-16 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
           tabindex="-1"
         >
-          <div class="py-1" role="none">
+          <div className="py-1" role="none">
             <a
               href="#"
-              class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"
+              className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"
               role="menuitem"
               tabindex="-1"
               id="menu-item-0"
@@ -73,7 +68,7 @@ function TopNavbar() {
             <form method="POST" action="#" role="none">
               <button
                 type="submit"
-                class="text-gray-700 block w-full px-4 py-2 text-left text-sm hover:bg-gray-100"
+                className="text-gray-700 block w-full px-4 py-2 text-left text-sm hover:bg-gray-100"
                 role="menuitem"
                 tabindex="-1"
                 id="menu-item-3"

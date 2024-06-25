@@ -1,0 +1,9 @@
+.close-toggle {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .close-toggle{
+        display: flex;
+    }
+}

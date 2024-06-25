@@ -33,6 +33,7 @@ function DarkThemeButton() {
     const newTheme = isChecked ? "dark" : "light";
     setItem("theme", newTheme);
     setTheme(newTheme);
+    location.reload();
   };
 
   return (
