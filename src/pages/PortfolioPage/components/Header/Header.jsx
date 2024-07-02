@@ -17,7 +17,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 
 import DarkThemeButton from "../../../../components/DarkThemeButton";
-import logo from "../../../../assets/img/logo_ec.webp";
+import logo from "../../../../assets/img/logo_ec.svg";
 
 const products = [
   {

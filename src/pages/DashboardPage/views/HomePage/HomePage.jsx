@@ -3,7 +3,7 @@ import React from 'react'
 
 function HomePage() {
   return (
-    <section className=' flex flex-col items-center'>
+    <section className=' flex flex-col items-center mt-2'>
       <div className='flex flex-col'>
         <div className='flex flex-col gap-2'>
           <h1 className='text-xl'>Saldo</h1>
@@ -39,7 +39,7 @@ function HomePage() {
 
       </div>
       <div>
-
+        
       </div>
     </section>
   )

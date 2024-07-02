@@ -1,6 +1,6 @@
 import React from "react";
 
-import logo from "../../../assets/img/logo_ec.webp";
+import logo from "../../../assets/img/logo_ec.svg";
 import { ArrowLeftIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { EyeIcon } from "@heroicons/react/20/solid";

@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/style.css";
 
-import logo from "../../../assets/img/logo_ec.webp";
+import logo from "../../../assets/img/logo_ec.svg";
 import { ArrowLeftIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 import { EyeIcon } from "@heroicons/react/20/solid";

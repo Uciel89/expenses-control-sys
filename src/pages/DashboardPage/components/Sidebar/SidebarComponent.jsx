@@ -1,4 +1,4 @@
-import logo from "../../../../assets/img/logo_ec.webp";
+import logo from "../../../../assets/img/logo_ec.svg";
 import './SidebarComponent.css';
 
 import { Sidebar, Menu, MenuItem, SubMenu, sidebarClasses } from "react-pro-sidebar";
