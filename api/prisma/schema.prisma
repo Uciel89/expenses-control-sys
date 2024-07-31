@@ -1,0 +1,51 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cuenta {
+  idCuenta     Int       @id @default(autoincrement())
+  nombre       String
+  saldo        Float
+  ingresoList  Ingreso[]
+  idGasto      Int?
+  gasto        Gasto?    @relation(fields: [idGasto], references: [idGasto])
+}
+
+model Establecimiento {
+  idEstablecimiento      Int       @id @default(autoincrement())
+  nombreEstablecimiento  String
+  idRubro                Int?
+  rubro                  Rubro?    @relation(fields: [idRubro], references: [idRubro])
+  gastoList              Gasto[]
+}
+
+model Gasto {
+  idGasto          Int             @id @default(autoincrement())
+  monto            Float
+  fecha            DateTime
+  idEstablecimiento Int?
+  establecimiento  Establecimiento? @relation(fields: [idEstablecimiento], references: [idEstablecimiento])
+  cuentaList       Cuenta[]
+}
+
+model Ingreso {
+  idIngreso   Int     @id @default(autoincrement())
+  saldo       Float
+  idCuenta    Int?
+  cuenta      Cuenta? @relation(fields: [idCuenta], references: [idCuenta])
+}
+
+model Rubro {
+  idRubro             Int               @id @default(autoincrement())
+  nombreRubro         String
+  total               Float
+  establecimientoList Establecimiento[]
+}
+
+
