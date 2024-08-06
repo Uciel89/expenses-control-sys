@@ -10,10 +10,10 @@ export class PosgresRepositorio implements CuentaRepositorio{
     async restarSaldoCuenta(cuentaValue: CuentaEntidad): Promise<CuentaEntidad> {
         const { idCuenta, saldo } = cuentaValue;
 
-        const cuentaDebitar = await prisma.cuenta.findUnique({
+        const cuentaBuscada = await prisma.cuenta.findUnique({
             where: { idCuenta }
         });
-        return cuentaDebitar;
+        return cuentaBuscada;
     }
     
 }
