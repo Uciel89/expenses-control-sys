@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { DATABASE_URL } from './config/configFile';
+import { DATABASE_URL } from '../../config/configFile';
 
 
 const prisma = new PrismaClient({

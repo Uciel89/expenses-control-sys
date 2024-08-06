@@ -1,9 +1,7 @@
-import "dotenv/config";
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
-import { router } from "./routes/index";
+import { router } from "../src/infraestructura/rutas/cuenta.rutas"
 import logger from "./utils/logger";
-import { doesNotThrow } from "assert";
 import { PORT } from "./config/configFile";
 
 
@@ -14,7 +12,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use('/api/vi',router);
+app.use('/api/v1', router);
 
 app.listen(PORT, () => {
   logger.info(`Server running on port ${PORT}`);
