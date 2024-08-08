@@ -7,14 +7,14 @@ const controlador = new CuentaControlador();
 const cuentaRouter = Router();
 
 
-cuentaRouter.get("/cuenta/", controlador.listarTodas);
+cuentaRouter.get("/", controlador.listarTodas);
 
-cuentaRouter.get("/cuenta/:id", controlador.listarPorId);
+cuentaRouter.get("/:id", controlador.listarPorId);
 
-cuentaRouter.post("/cuenta/", controlador.crear);
+cuentaRouter.post("/", controlador.crear);
 
-cuentaRouter.put("/cuenta/", controlador.editar);
+cuentaRouter.put("/", controlador.editar);
 
-cuentaRouter.delete("/cuenta/", controlador.eliminar);
+cuentaRouter.delete("/:id", controlador.eliminar);
 
 export { cuentaRouter };
