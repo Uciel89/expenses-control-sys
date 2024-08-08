@@ -1,9 +1,8 @@
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
-import { router } from "../src/infraestructura/rutas/cuenta.rutas"
+import { router } from "../src/shared/rutas_compuestas"
 import logger from "./utils/logger";
 import { PORT } from "./config/configFile";
-
 
 
 const app: Express = express();
